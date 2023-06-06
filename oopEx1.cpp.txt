@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+class complex{
+    int real, img;
+    public:
+
+    complex(){
+        real = 0;
+        img = 0;
+    }
+
+    complex operator+(complex b){
+        complex b1;
+        b1.real = real + b.real;
+        b1.img = img + b.img;
+        return b1;
+    }
+
+    complex operator-(complex b){
+        complex b1;
+        b1.real = real - b.real;
+        b1.img = img - b.img;
+
+        return b1;
+    }
+
+    complex operator*(complex b){
+        complex b1;
+        b1.real = (real * b.real) - (img + b.img);
+        b1.img = (real * b.img) + (img * b.real);
+        return b1;
+    }
+
+    friend istream &operator >>(istream &is, complex &a);
+    friend ostream &operator <<(ostream &os, complex &a);
+};
+
+istream &operator >>(istream &is, complex &a){
+    is>>a.real>>a.img;
+    return is;
+}
+
+ostream &operator <<(ostream &os, complex &a){
+    os<<a.real<<" + "<<a.img<<" i ";
+    return os;
+}
+
+
+int main(){
+
+    complex c1, c2, c3, c4, c5;
+    cout<<"Enter real and imagenay part of complex number: ";
+    cin>>c1;
+
+    cout<<"Enter real and imagenay part of complex number: ";
+    cin>>c2;
+
+    c3 = c1 + c2;
+    cout<<"Addition is: "<<c3<<endl;
+
+    c4 = c1 - c2;
+    cout<<"Substraction is: "<<c4<<endl;
+
+    c5 = c1 * c2;
+    cout<<"Multiplication is: "<<c5<<endl;
+
+    return 0;
+}

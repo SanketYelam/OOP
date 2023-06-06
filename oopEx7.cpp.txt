@@ -1,0 +1,29 @@
+#include<iostream>
+#include<map>
+#include<string>
+using namespace std;
+
+int main(){
+
+    map<string,int> mp;
+
+    mp.insert({"maharashtra", 1000});
+    mp.insert({"goa", 500});
+    mp.insert({"gujrat", 2000});
+    mp.insert({"bihar", 4000});
+    mp.insert({"punjab", 3500});
+
+    map<string, int>::iterator it;
+
+    for(it = mp.begin(); it != mp.end(); it++){
+        cout<<it->first<<" "<<it->second<<endl;
+    } 
+
+    string s;
+    cout<<"\nEnter state name\n";
+    cin>>s;
+
+    cout<<"Population of "<<s<<" is "<<mp[s];
+
+    return 0;
+}

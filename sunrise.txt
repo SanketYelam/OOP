@@ -1,0 +1,78 @@
+#include<iostream>
+
+#include<graphics.h>
+#include<cstdlib>
+//#include<dos.h>
+#include<cmath>
+Using namespace std;
+
+Int main()
+{
+    Initwindow(800,500);
+    Int x0,y0;
+    Int gdriver = DETECT,gmode,errorcode;
+    Int xmax,ymax;
+
+    Errorcode=graphresult();
+
+    If(errorcode!=0)
+    {
+        Cout<<”Graphics error:”<<grapherrormsg(errorcode);
+        Cout<<”Press any ket to halt”;
+        Exit(1);
+    }
+    Int I,j;
+    Setbkcolor(BLUE);
+    Setcolor(RED);
+    Rectangle(0,0,getmaxx(),getmaxy());
+
+    Outtextxy(250,240,”::::PRESS ANY KEY TO CONTINUE:::::”);
+    While(!kbhit());
+    For(i=50,j=0;i<=250,j<=250;i+=5,j+=5)
+    {
+        Delay(120);
+        Cleardevice();
+        If(i<=150)
+        {
+            Setcolor(YELLOW);
+            Setfillstyle(1,YELLOW);
+            Fillellipse(I,300-j,20,20);
+        }
+        Else
+        {
+            Setcolor(GREEN^RED);
+            Setfillstyle(1,GREEN^RED);
+            Fillellipse(I,300-j,20,20);
+        }
+    }
+    Delay(1000);
+    Cleardevice();
+    Setcolor(RED);
+    Setfillstyle(1,RED);
+    Fillellipse(300,50,20,20);
+    Delay(150);
+
+    Int k,l;
+    For(k=305,l=55;k<=550,l<=300;k+=5,l+=5)
+    {
+        Delay(120);
+        Cleardevice();
+        If(k<=450)
+        {
+
+            Setcolor(GREEN^RED);
+            Setfillstyle(1,GREEN^RED);
+
+            Fillellipse(k,l,20,20);
+        }
+        Else
+        {
+            Setcolor(YELLOW);
+            Setfillstyle(1,YELLOW);
+            Fillellipse(k,l,20,20);
+        }
+    }
+    Return 0;
+}
+
+

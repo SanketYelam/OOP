@@ -1,0 +1,132 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+class student
+{
+	private:
+		char name[20];
+		int roll;
+		char class1[10];
+		char div;
+		char dob[10];
+		char address[20];
+		char bloodgr[10];
+		long int teleno, drivili;
+	public:
+		static int countb;
+		student()
+		{
+			roll = 0;
+			strcpy(name,"unknown");
+			strcpy(class1,"SE");
+			div = 'a';	
+			strcpy(dob,"DD/MM/YYYY");
+			strcpy(address,"unknown");	
+			strcpy(bloodgr,"ab+");
+			teleno = 0000;
+			drivili = 0000;
+			countb++;
+		}
+
+		student(student &s)
+		{
+			roll = s.roll;
+			strcpy(name,s.name);
+			strcpy(class1,s.class1);
+			div = s.div;	
+			strcpy(dob,s.dob);
+			strcpy(address,s.address);	
+			strcpy(bloodgr,s.bloodgr);
+			teleno = s.teleno;
+			drivili = s.drivili;
+			countb++;
+		}
+
+		void getdata()
+		{ 	cout<<"\nEnter roll no: ";
+		  	cin>>roll;
+			cout<<"\nName of student: ";
+			cin>>name;
+			cout <<"\nEnter date of birth: ";
+			cin>>dob;
+			cout<<"\nEnter class of student: ";
+			cin>>class1;
+			cout<<"\nEnter div: ";
+			cin>>div;
+			cout<<"\nBlood group: ";
+			cin>>bloodgr;
+			cout<<"\nAddress: ";
+			cin>>address;
+			cout<<"\nTelephone number: ";
+			cin>>teleno;
+			cout<<"\nEnter driving license number: ";
+			cin>>drivili;
+
+		}
+		
+		void display()
+		{
+			cout<<endl;
+			cout<<"Name: "<<name<<endl;	
+			cout<<"Roll: "<<roll<<endl;
+			cout<<"Class: "<<class1<<endl;
+			cout<<"Div: "<<div<<endl;
+			cout<<"DOB: "<<dob<<endl;
+			cout<<"address: "<<address<<endl;
+			cout<<"Blood group: "<<bloodgr<<endl;
+			cout<<"Telephone Number: "<<teleno<<endl;
+			cout<<"Driving licence: "<<drivili<<endl;
+			cout<<endl;
+		}
+		static void count()
+		{
+			cout<<"\nTotal student count is: "<<countb<<endl;;
+		}
+		~student()
+		{
+			cout<<"Name "<< this->name<<" deleted"<<endl;
+		}
+};
+
+
+int student::countb=0;
+
+
+int main()
+{	
+	student s1,*ptr[10];
+
+	s1.getdata();
+	s1.display();
+
+	student s3(s1);
+	cout<<"\n Information is copied using Copy Constructor\n";
+	s3.display();
+	
+	int n;
+	cout<<"\nhow many student database you want to save: "<<endl;
+	cin>>n;
+
+	for(int i=0;i<n;i++)
+	{
+		ptr[i] = new student;
+		
+		ptr[i]->getdata();
+	}
+
+	s1.count();
+
+	for(int i=0;i<n;i++)	
+	{
+		cout<<"\nstudent data "<< i+1 <<endl;
+		ptr[i]->display();
+	}
+	
+	for(int i=0;i<n;i++)	
+	{
+		delete ptr[i];
+	}
+	return 0;
+}						
+		
+

@@ -1,0 +1,38 @@
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int main(){
+
+    ofstream ofs;
+    ofs.open("output.txt", ios::out);
+    string line;
+    cout<<"Enter Info for Writing (-1 on new line for Stop): "<<endl;
+    while(ofs){
+
+        getline(cin, line);
+
+        if(line == "-1"){
+            break;
+        }
+
+        ofs<<line<<endl;
+
+    }
+
+    ofs.close();
+
+    ifstream ifs;
+    ifs.open("output.txt", ios::in);
+
+    while(getline(ifs, line)){
+
+        cout<<line<<endl;
+
+    }
+
+    ifs.close();
+
+    return 0;    
+}
